@@ -1,78 +1,95 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pixel Morphing Generator</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <header>
-        <h1>Pixel Morphing Generator</h1>
+      <h1>Pixel Morphing Generator</h1>
     </header>
     <main>
-        <div class="container">
-            <div class="control-panel">
-                <section id="image-upload">
-                    <h2>1. 画像アップロード</h2>
-                    <div class="upload-box">
-                        <label for="initial-image-input">初期画像</label>
-                        <input type="file" id="initial-image-input" accept="image/*">
-                    </div>
-                    <div class="upload-box">
-                        <label for="target-image-input">目標画像</label>
-                        <input type="file" id="target-image-input" accept="image/*">
-                    </div>
-                </section>
+      <div class="container">
+        <div class="control-panel">
+          <section id="image-upload">
+            <h2>1. 画像アップロード</h2>
+            <div class="upload-box">
+              <label for="initial-image-input">初期画像</label>
+              <input type="file" id="initial-image-input" accept="image/*" />
+            </div>
+            <div class="upload-box">
+              <label for="target-image-input">目標画像</label>
+              <input type="file" id="target-image-input" accept="image/*" />
+            </div>
+          </section>
 
-                <section id="hyperparameters">
-                    <h2>2. ハイパーパラメータ設定</h2>
-                    <div class="param-box">
-                        <label for="resolution">解像度: <span id="resolution-value">64</span>x<span id="resolution-value-2">64</span></label>
-                        <input type="range" id="resolution" min="16" max="1024" value="64" step="16">
-                    </div>
-                    <div class="param-box">
-                        <label for="matching-mode">マッチングモード</label>
-                        <select id="matching-mode">
-                            <option value="luminance" selected>濃度</option>
-                            <option value="hue">色相</option>
-                        </select>
-                    </div>
-                </section>
-
-                <section id="actions">
-                    <h2>3. アクション</h2>
-                    <button id="update-preview-btn" disabled>プレビューを生成</button>
-                </section>
+          <section id="hyperparameters">
+            <h2>2. ハイパーパラメータ設定</h2>
+            <div class="param-box">
+              <label for="resolution"
+                >解像度: <span id="resolution-value">64</span>x<span
+                  id="resolution-value-2"
+                  >64</span
+                ></label
+              >
+              <input
+                type="range"
+                id="resolution"
+                min="16"
+                max="1024"
+                value="64"
+                step="16"
+              />
             </div>
 
-            <div class="preview-area">
-                <div class="preview-grid">
-                    <div class="preview-box" id="initial-image-preview-box">
-                        <h3>初期画像</h3>
-                        <canvas id="initial-image-preview"></canvas>
-                    </div>
-                    <div class="preview-box" id="target-image-preview-box">
-                        <h3>目標画像</h3>
-                        <canvas id="target-image-preview"></canvas>
-                    </div>
-                </div>
-                <div class="preview-box" id="static-preview-box">
-                    <h3>完成イメージプレビュー</h3>
-                    <canvas id="static-preview"></canvas>
-                </div>
-                <div class="preview-box" id="loading-animation-box" style="display: none;">
-                    <h3>処理中...</h3>
-                    <div class="loader"></div>
-                </div>
-                <div id="gatchanko-animation-container" style="display: none;">
-                    <canvas id="gatchanko-initial-canvas"></canvas>
-                    <canvas id="gatchanko-target-canvas"></canvas>
-                    <img id="neko-panch-img" src="neko_punch.png" alt="Neko Punch">
-                </div>
-                </div>
+            <div class="param-box">
+              <label for="matching-mode">マッチングモード</label>
+              <select id="matching-mode">
+                <option value="luminance" selected>濃度</option>
+                <option value="hue">色相</option>
+              </select>
+            </div>
+          </section>
+
+          <section id="actions">
+            <h2>3. アクション</h2>
+            <button id="update-preview-btn" disabled>プレビューを生成</button>
+          </section>
         </div>
+
+        <div class="preview-area">
+          <div class="preview-grid">
+            <div class="preview-box" id="initial-image-preview-box">
+              <h3>初期画像</h3>
+              <canvas id="initial-image-preview"></canvas>
+            </div>
+            <div class="preview-box" id="target-image-preview-box">
+              <h3>目標画像</h3>
+              <canvas id="target-image-preview"></canvas>
+            </div>
+          </div>
+          <div class="preview-box" id="static-preview-box">
+            <h3>完成イメージプレビュー</h3>
+            <canvas id="static-preview"></canvas>
+          </div>
+          <div
+            class="preview-box"
+            id="loading-animation-box"
+            style="display: none"
+          >
+            <h3>処理中...</h3>
+            <div class="loader"></div>
+          </div>
+          <div id="gatchanko-animation-container" style="display: none">
+            <canvas id="gatchanko-initial-canvas"></canvas>
+            <canvas id="gatchanko-target-canvas"></canvas>
+            <img id="neko-panch-img" src="neko_punch.png" alt="Neko Punch" />
+          </div>
+        </div>
+      </div>
     </main>
     <script type="module" src="main.js"></script>
-</body>
+  </body>
 </html>
